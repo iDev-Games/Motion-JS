@@ -1,0 +1,40 @@
+{
+  "name": "@idevgames/motion-js",
+  "version": "1.0.0",
+  "description": "Motion.js is a global time engine for CSS-native animation. It updates time-reactive CSS variables once per second while CSS handles smooth 60fps interpolation. Outputs --motion-time, --motion-progress, --motion-loop, --motion-bounce, and --motion-noise. Build custom animations entirely in CSS or pair with motion-animations.css for ready-made effects. Perfect for ambient motion, loading states, continuous animations, and time-driven UI effects.",
+  "main": "src/motion.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iDev-Games/motion-js.git"
+  },
+  "keywords": [
+    "motion",
+    "time-based",
+    "css",
+    "html",
+    "design",
+    "js",
+    "frontend",
+    "simple",
+    "animation",
+    "css-animations",
+    "css-variables",
+    "time-animations",
+    "data-attribute-html",
+    "loading-animations",
+    "ambient-motion",
+    "continuous-animation",
+    "raf",
+    "requestAnimationFrame",
+    "performance"
+  ],
+  "author": "iDev Games",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iDev-Games/motion-js/issues"
+  },
+  "homepage": "https://github.com/iDev-Games/motion-js#readme",
+  "publishConfig": {
+    "@iDev-Games:registry": "https://npm.pkg.github.com"
+  }
+}

@@ -1,0 +1,669 @@
+<html>
+    <head>
+        <title>Motion.js Documentation</title>
+
+        <!-- Motion JS -->
+        <script src="src/motion.js"></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+        <!--End Fonts -->
+
+        <!-- Mobile viewport meta tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Styles -->
+        <style>
+            body{
+                margin:0px;
+                padding:0px;
+                background-color:#060606;
+                color:#FFF;
+                font-family: 'Space Mono', monospace;
+            }
+            a{
+                color:#FFF;
+            }
+            hr{
+                margin:0px;
+            }
+            .motion.background1{
+                overflow:hidden;
+            }
+            .motion.background1:after{
+                content:"";
+                width:100%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0;
+                background-image:url("assets/img/clouds.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: 0;
+                transform:translateX(calc(var(--motion-progress)));
+                opacity: 0;
+                transition:transform linear 1s;
+            }
+            .motion.background1:after{
+                opacity: 0.9;
+            }
+            .background2{
+                overflow:hidden;
+            }
+            .background2:before{
+                content:"";
+                width:400%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0;
+                background-image:url("assets/img/plane.jpg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: 0;
+                transform:translateX(calc(var(--motion-progress) - 140%)) translateY(calc(var(--motion-progress) - 10%));
+                opacity: 0.1;
+                transition:transform linear 1s;
+            }
+            .background3{
+                overflow:hidden;
+            }
+            .background3 div{
+                position: relative;
+                z-index:3;
+            }
+            .background3:before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: url("assets/img/planet1.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                opacity: 0.8;
+            }
+            .background3:after{
+                content:"";
+                width:100%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0;
+                background: rgb(63,210,251);
+                background: linear-gradient(194deg, rgba(63,210,251,0) 0%, rgba(0,0,0,1) 100%);
+                background-position: 0;
+                opacity: calc(var(--motion-progress) + 50%);
+                z-index:0;
+            }
+            .background4{
+                overflow:hidden;
+            }
+            .background4:before{
+                content:"";
+                width:200%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0px;
+                background-image:url("assets/img/wheel.png");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                transform: translateX(calc(var(--motion-progress) - 75%)) rotate(var(--motion-deg));
+                opacity: 0.8;
+                transition:all linear 2s;
+            }
+            .background5{
+                overflow:hidden;
+                background:rgba(255,255,255,calc(var(--motion-progress) / 400));
+                transition:all linear 1s;
+            }
+            .background5:before{
+                content:"";
+                width:200%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0px;
+                background-image:url("assets/img/living-room.jpg");
+                background-size: cover;
+                background-position: left bottom;
+                background-repeat: no-repeat;
+                mix-blend-mode: screen;
+                transform: translateX(calc((var(--motion-progress-reverse) / 2)));
+                transition:transform linear 1s;
+            }
+            .background6{
+                overflow:hidden;
+                background:rgba(255,255,255, 0.2);
+                opacity: calc(var(--motion-progress) + 20%);
+                transition:opacity linear 1s;
+            }
+            .background6:before{
+                content:"";
+                width:100%;
+                height:200%;
+                position:absolute;
+                top:0;
+                left:0px;
+                background-image:url("assets/img/skyscraper.jpg");
+                background-size:200%;
+                background-position: center top;
+                background-repeat: no-repeat;
+                mix-blend-mode: screen;
+                transform: translateY(calc(var(--motion-progress-reverse) / 2));
+                transition:transform linear 1s;
+            }
+            .motion.background7{
+                overflow:hidden;
+            }
+            .background7:before{
+                content:"";
+                width:100%;
+                height:100%;
+                clip-path: rect(0% 100% var(--motion-progress) 0%);
+                position:absolute;
+                top:0;
+                left:0px;
+                background: rgb(252,176,69);
+                background: linear-gradient(0deg, rgba(252,176,69,1) 25%, rgba(253,124,41,1) 25%, rgba(253,124,41,1) 50%, rgba(253,29,29,1) 50%, rgba(253,29,29,1) 75%, rgba(208,0,0,1) 75%);
+                background-size: 100vw 100vh;
+                background-position:top;
+                background-repeat: no-repeat;
+                transition:clip-path linear 0.7s;
+            }
+            .background8{
+                overflow:hidden;
+                background:rgba(255,255,255,calc(var(--motion-progress) / 300));
+            }
+            .background8:before{
+                content:"";
+                width:100%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0px;
+                background-image:url("assets/img/servers.jpg");
+                background-size: 100vw 100vh;
+                background-position: center top;
+                background-repeat: no-repeat;
+                filter: blur(calc(var(--motion-bounce) / 8));
+            }
+            .background9{
+                overflow:hidden;
+                background: #111111;
+            }
+            .background9:before{
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0px;
+                background: #0b0a0a;
+                background-size: 100vw 100vh;
+                background-position: center top;
+                background-repeat: no-repeat;
+                transform: translateY(calc((var(--motion-progress) - 50%) * 0.5));
+                transition:transform linear 0.4s;
+            }
+            .pageContainer{
+                max-width:100%;
+                overflow:hidden;
+            }
+            .container{
+                background-color:#060606;
+                width:100%;
+                min-height:100vh;
+                position:relative;
+                margin:auto;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                max-width: 1800px;
+            }
+            hr{
+                border-color:#AAAAAA;
+            }
+            pre{
+                font-size: 22px;
+                white-space: pre-line;
+                background-color: #111;
+                padding: 20px;
+            }
+            .box{
+                position:relative;
+                display: inline-block;
+                width:auto;
+                margin:auto;
+                margin:20px;
+                padding:20px;
+                max-width: 100%;
+            }
+            .boxBG{
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            .alignCenter{
+                text-align:center;
+            }
+            h1, .motionText{
+                font-family: 'Bebas Neue', cursive;
+                color: #700c0c;
+                text-shadow: 2px 2px 2px #000000;
+                font-size:72px;
+            }
+            #logo {
+                transform: scale(calc((90% + var(--motion-bounce)) / 2));
+                transition: transform linear 1s;
+            }
+            .listItem{
+                font-size: 20px;
+                background-color: #111;
+                padding: 20px;
+                display:inline-block;
+                margin-top:10px;
+            }
+            .headerText{
+                font-family: 'Bebas Neue', cursive;
+                color: #FFF;
+                text-shadow: 2px 2px 2px #000000;
+                font-size:52px;
+                width:238px;
+            }
+            .moreExamples{
+                display: inline-block;
+                margin: auto;
+                background-color: #F1F1F1;
+                color: #060606;
+                font-weight: bold;
+                padding: 10px 45px;
+                text-decoration: none;
+                transition: transform 1s linear;
+            }
+            .moreExamples.motion{
+                transform: scale(1.1);
+            }
+            #headerLine{
+                transform:scaleX(calc(1 + var(--motion-bounce) / 150));
+                transition: transform linear 1s;
+            }
+            #headerLine2{
+                background:#AAAAAA;
+                width:200px;
+                transform:scaleX(calc(1 + var(--motion-bounce) / 200));
+                transition: transform linear 1s;
+            }
+            #Whatis{
+                transform:scale(calc(1 + var(--motion-bounce) / 200));
+                width:100%;
+                z-index:2;
+                transition: transform linear 1s;
+            }
+            #creative{
+                opacity: calc(var(--motion-progress) + 10%);
+                transform:translateX(calc((var(--motion-progress) - 50%) * 0.5));
+                transition:all linear 1s;
+            }
+            #withcss{
+                opacity: calc(var(--motion-progress) + 10%);
+                transform:translateX(calc((var(--motion-progress) - 50%) * -0.5));
+                transition:all linear 1s;
+            }
+            .fadeIn{
+                opacity:0;
+            }
+            .fadeIn.motion{
+                animation: fadeIn 1s normal forwards ease-in-out;
+            }
+            .fadeIn.animdelay1{
+                animation-delay: 0.25s;
+            }
+            .fadeIn.animdelay2{
+                animation-delay: 0.5s;
+            }
+            @keyframes fadeIn {
+                0% {
+                    opacity:0;
+                }
+                100% {
+                    opacity:1;
+                }
+            }
+            @media screen and (min-width: 768px) {
+                #documentation{
+                    transform:translateY(calc((var(--motion-progress) - 50%) * 0.5));
+                    transition: transform linear 1s;
+                }
+                #textBlock{
+                    transform:translateY(calc((var(--motion-progress) - 50%) * 0.2));
+                    transition: transform linear 1s;
+                }
+                .title{
+                    transform:translateY(calc((var(--motion-progress) - 50%) * -0.2));
+                    transition: transform linear 1s;
+                }
+                .headerText{
+                    font-size:122px;
+                    width: 100%;
+                }
+                #examples{
+                    position:relative;
+                    z-index:2;
+                    transform:translateY(calc((var(--motion-progress) - 50%) * 0.3));
+                    transition:transform linear 1s;
+                }
+            }
+        </style>
+        <!-- End of styles -->
+
+    </head>
+    <body data-motion data-motion-var="true" data-motion-duration="10000">
+        <div class="pageContainer">
+
+            <div class="container alignCenter background1" data-motion data-motion-var="true" data-motion-duration="8000" data-motion-min="75" data-motion-max="100">
+                <div class="box">
+                    <h1 id="logo" data-motion data-motion-var="true" data-motion-duration="3000">Motion.js</h1>
+
+                    <hr id="headerLine" data-motion data-motion-var="true" data-motion-duration="5000" />
+
+                    <h2 id="documentation" data-motion data-motion-var="true" data-motion-duration="6000">Documentation <sup>v1.0.0</sup></h2>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background2" 
+                data-motion 
+                data-motion-var="true" 
+                data-motion-duration="7000">
+
+                <div class="box" id="Whatis" 
+                    data-motion 
+                    data-motion-var="true" 
+                    data-motion-duration="4000">
+                    <h2>What is Motion.js?</h2>
+                </div>
+
+                <hr id="headerLine2" 
+                    data-motion 
+                    data-motion-var="true" 
+                    data-motion-duration="5000"/>
+
+                <div id="textBlock" 
+                    data-motion 
+                    data-motion-var="true" 
+                    data-motion-duration="6000">
+
+                    <div class="box fadeIn" data-motion>
+                        Motion.js is a global time engine for CSS-native animation. It provides a shared clock that updates CSS variables once per second, while CSS handles smooth 60fps interpolation. Motion.js supplies the timing source then CSS performs the animation.
+                    </div>
+
+                    <div class="box fadeIn animdelay1" data-motion>
+                        Using nothing but CSS, HTML, and Motion.js, you can build synced, procedural, and time-driven motion systems. Motion.js is extremely lightweight and written in pure JavaScript with zero dependencies.
+                    </div>
+
+                    <div class="box fadeIn animdelay2" data-motion>
+                        Motion.js is designed for advanced motion systems, game loops, and coordinated effects. Pair it with 
+                        <a href="https://github.com/iDev-Games/Trig-JS">Trig.js</a> for scroll-reactive motion and 
+                        <a href="https://github.com/iDev-Games/Cursor-JS">Cursor.js</a> for cursor-reactive motion.
+                    </div>
+
+                </div>
+            </div>
+
+
+            <hr/>
+
+            <hr/>
+
+<div class="container alignCenter background9" 
+     data-motion 
+     data-motion-var="true" 
+     data-motion-duration="5000">
+
+    <div class="box boxBG title" id="dataset">
+        <h2>Dataset Outputs</h2>
+    </div>
+
+    <div class="box boxBG" data-motion>
+
+        <p>
+            When <strong>data-motion-var="true"</strong> is enabled, Motion.js automatically updates
+            dataset attributes on the element every tick. These values update in increments of 10
+            and can be used directly in CSS for conditional styling.
+        </p>
+
+        <pre>
+        &lt;div class="demoBox"
+            data-motion
+            data-motion-var="true"
+            data-motion-duration="3000"&gt;
+        &lt;/div&gt;
+                </pre>
+
+                <p>During runtime, Motion.js will output attributes like:</p>
+
+                <div class="listItem">data-motion-var="40"</div>
+                <div class="listItem">data-motion-time="1200"</div>
+                <div class="listItem">data-motion-loop="2"</div>
+                <div class="listItem">data-motion-bounce="80"</div>
+                <div class="listItem">data-motion-noise="30"</div>
+
+                <p>You can use these values in CSS attribute selectors:</p>
+
+                <pre>
+        .demoBox[data-motion-var="50"] {
+            background: #3b82f6;
+        }
+
+        .demoBox[data-motion-bounce="80"] {
+            transform: scale(1.1);
+        }
+
+        .demoBox[data-motion-noise="30"] {
+            filter: brightness(1.2);
+        }
+                </pre>
+
+                <p>
+                    This allows you to build <strong>CSS-only logic</strong> based on time, loops, bounce,
+                    noise, and progress with no JavaScript required.
+                </p>
+
+            </div>
+        </div>
+
+
+            <div class="container alignCenter background3" data-motion data-motion-var="true" data-motion-duration="8000">
+                <div class="box boxBG title" id="install">
+                    <h2>How To Install?</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>All you need to do is add the dist motion.min.js file into your projects JS folder and add the following code with your motion.js location as the src. Put this code in to your head HTML tags. Download Motion.js <a href="https://github.com/iDev-Games/Motion-JS" target="_Blank" style="color:#FFF;">here</a> or use <a href="https://www.npmjs.com/package/@idevgames/motion-js" target="_Blank" style="color:#FFF;">npm</a>.</p>
+                    <pre>
+                            &lt;script src="/js/motion.min.js"&gt;&lt;/script&gt;
+                    </pre>
+                    <p>Or just add a CDN instead</p>
+                    <pre>
+                        &lt;script src="https://cdn.jsdelivr.net/npm/@idevgames/motion-js/dist/motion.min.js"&gt;&lt;/script&gt;
+                    </pre>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background4" data-motion data-motion-var="true" data-motion-duration="4000">
+                <div class="box boxBG title" id="use">
+                    <h2>How To Use?</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>To activate motion.js add the data attribute "data-motion" or a class "enable-motion" to your html element. Motion.js will automatically start updating time-reactive CSS variables on that element once it enters the viewport.</p>
+                    <pre>
+                            &lt;div data-motion data-motion-var="true"&gt; &lt;/div&gt;
+                    </pre>
+                    <pre>
+                        .element{
+                            opacity: calc(var(--motion-progress) / 100);
+                            transform: rotate(var(--motion-deg));
+                        }
+                    </pre>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background5" data-motion data-motion-var="true" data-motion-duration="6000">
+                <div class="box boxBG title" id="animation">
+                    <h2>Time-Based Animations</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>Motion.js calculates time-based progress and creates CSS variables that you can use with CSS transform, opacity, colors, etc.</p>
+                    <pre>
+                            &lt;div class="element" data-motion data-motion-var="true" data-motion-duration="2000"&gt; &lt;/div&gt;
+                    </pre>
+                    <pre>
+                            .element{ transform: translateX( var(--motion-progress) ); }
+                    </pre>
+                    <p>The CSS variables you can use by adding <strong>data-motion-var="true"</strong> are:</p>
+                    <div class="listItem">
+                        --motion-time
+                    </div>
+                    <div class="listItem">
+                        --motion-time-reverse
+                    </div>
+                    <div class="listItem">
+                        --motion-progress
+                    </div>
+                    <div class="listItem">
+                        --motion-progress-reverse
+                    </div>
+                    <div class="listItem">
+                        --motion-loop
+                    </div>
+                    <div class="listItem">
+                        --motion-loop-reverse
+                    </div>
+                    <div class="listItem">
+                        --motion-bounce
+                    </div>
+                    <div class="listItem">
+                        --motion-bounce-reverse
+                    </div>
+                    <div class="listItem">
+                        --motion-noise
+                    </div>
+                    <div class="listItem">
+                        --motion-noise-reverse
+                    </div>
+                    <div class="listItem">
+                        --motion-deg
+                    </div>
+                    <div class="listItem">
+                        --motion-deg-reverse
+                    </div>
+                    <p>The data attribute will also update in increments of 10 so you can use CSS attribute selectors like <span class="listItem">[data-motion-var="50"]{ }</span> for more control.</p>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background6" data-motion data-motion-var="true" data-motion-duration="7000">
+                <div class="box boxBG title" id="state">
+                    <h2>Animation State</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>Motion.js creates classes of "motion-playing" and "motion-paused" on elements, as well as progress checkpoint classes like "motion-progress-25", "motion-progress-50", "motion-progress-75" on the body element.</p>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background7" data-motion data-motion-var="true" data-motion-duration="5000">
+                <div class="box boxBG title" id="variables">
+                    <h2>Special Variables</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>Motion.js provides special variables for organic motion: <strong>--motion-bounce</strong> creates a ping-pong effect, and <strong>--motion-noise</strong> generates pseudo-random values for natural-looking animations.</p>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background8" data-motion data-motion-var="true" data-motion-duration="8000">
+                <div class="box boxBG title" id="attributes">
+                    <h2>Data Attributes</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>You can use the below data attributes for additional features</p>
+                    <div class="listItem">
+                        <pre>
+                            &lt;div id="yourelement" data-motion data-motion-var="true" data-motion-duration="1000" data-motion-delay="0" data-motion-min="0" data-motion-max="100" data-motion-global="false"&gt; &lt;/div&gt;
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter background8" data-motion data-motion-var="true" data-motion-duration="7000">
+                <div class="box boxBG title" id="control">
+                    <h2>Manual Control</h2>
+                </div>
+                <div class="box boxBG" data-motion>
+                    <p>Pause and play Motion.js from the console for DevTools workflow:</p>
+                    <div class="listItem">
+                        <pre>
+                            // Pause all time updates
+                            motion.pause();
+
+                            // Resume time updates
+                            motion.play();
+                        </pre>
+                    </div>
+                    <p>This is especially useful when inspecting CSS in DevTools - pause the clock, make your changes, then resume.</p>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container alignCenter" data-motion data-motion-var="true" data-motion-duration="6000">
+                <div id="creative" class="box" data-motion data-motion-var="true" data-motion-duration="5000">
+                    <div class="headerText">BE CREATIVE</div>
+                </div>
+                <div id="withcss" class="box" data-motion data-motion-var="true" data-motion-duration="5000">
+                    <div class="headerText">WITH YOUR CSS</div>
+                </div>
+                <div id="examples" class="box" data-motion>
+                    <a class="moreExamples" href="https://codepen.io/collection/WQeVyK" target="_Blank" style="margin-top:10px;" data-motion>Codepen Examples</a>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="container">
+                <div class="box">
+                    <p>Check out the code of the documentation as an example.</p>
+                </div>
+                <div class="listItem">
+                    <pre>
+                        <a href="https://github.com/iDev-Games/Motion-JS/blob/master/index.html" target="_Blank" style="color:#FFF;">https://github.com/iDev-Games/Motion-JS/blob/master/index.html</a>
+                    </pre>
+                </div>
+                <div class="box">
+                    <a href="https://github.com/iDev-Games/Motion-JS" target="_Blank" style="color:#FFF;">Download here</a>
+                </div>
+                <div class="box">
+                    <a href="https://dev.to/idevgames" target="_Blank" style="color:#FFF;">Keep up to date on dev.to</a>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
