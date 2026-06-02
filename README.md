@@ -74,30 +74,7 @@ Or just add a CDN instead
 <script src="https://cdn.jsdelivr.net/npm/@idevgames/motion-js/dist/motion.min.js"></script>
 ```
 
-For the animation library:
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@idevgames/motion-js/dist/motion-animations.min.css">
-```
-
 # How To Use?
-
-## Quick Start: Ready-Made Animations
-
-To use the ready-made animations from motion-animations.css, simply add the animation class and a `.motion-target` to your element:
-
-```html
-<div class="motion-pulse">
-    <div class="motion-target">This element will pulse continuously!</div>
-</div>
-```
-
-You can customize animations with CSS variables:
-
-```html
-<div class="motion-rotate" style="--motion-duration: 3s; --motion-delay: 1s;">
-    <div class="motion-target">This will rotate every 3 seconds after a 1s delay</div>
-</div>
-```
 
 ## Custom Time-Reactive Animations
 
